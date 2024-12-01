@@ -16,15 +16,15 @@ class Day1Test<E> {
 
 	@Test
 	void testPart1() {
-		var inputData = Day1.parse(TEST_INPUT);
-		long totalDistance = Day1.totalDistance(inputData.getLeft(), inputData.getRight());
+		var day1 = Day1.parse(TEST_INPUT);
+		long totalDistance = day1.totalDistance();
 		assertThat(11).isEqualTo(totalDistance);
 	}
 
 	@Test
 	void testPart2() {
-		var inputData = Day1.parse(TEST_INPUT);
-		long simularityScore = Day1.simularityScore(inputData.getLeft(), inputData.getRight());
+		var day1 = Day1.parse(TEST_INPUT);
+		long simularityScore = day1.simularityScore();
 		assertThat(31).isEqualTo(simularityScore);
 	}
 }
