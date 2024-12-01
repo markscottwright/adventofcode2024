@@ -1,4 +1,4 @@
-package adventofcode2025;
+package adventofcode2024;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
