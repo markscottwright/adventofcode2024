@@ -4,9 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-import adventofcode2024.Day1;
-
-class Day1Test<E> {
+public class Day1Test {
 
 	private static final String TEST_INPUT = """
 			3   4
