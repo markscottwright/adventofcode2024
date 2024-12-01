@@ -9,8 +9,8 @@ import java.util.Arrays;
 import org.apache.commons.collections4.bag.HashBag;
 
 public class Day1 {
-	ArrayList<Integer> locationIds1 = new ArrayList<Integer>();
-	ArrayList<Integer> locationIds2 = new ArrayList<Integer>();
+	private ArrayList<Integer> locationIds1 = new ArrayList<Integer>();
+	private ArrayList<Integer> locationIds2 = new ArrayList<Integer>();
 
 	public static Day1 parse(String data) {
 		Day1 day1 = new Day1();
