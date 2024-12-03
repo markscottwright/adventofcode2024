@@ -33,7 +33,10 @@ public class Day3 {
 					+ "|"
 					+ "don't\\(\\)"
 					+ "|"
-					+ "mul\\(([0-9][0-9]?[0-9]?),([0-9][0-9]?[0-9]?)\\)").toList()) {
+					+ "mul\\("
+						+ "([0-9][0-9]?[0-9]?),"
+						+ "([0-9][0-9]?[0-9]?)"
+					+ "\\)").toList()) {
 				//@formatter:on
 				if (match.group().equals("do()"))
 					active = true;
