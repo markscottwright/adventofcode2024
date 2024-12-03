@@ -50,23 +50,30 @@ public class Day2 {
 				if (i == skipPosition)
 					continue;
 
-				int diff = (skipPosition == i - 1) ? levels.get(i) - levels.get(i - 2)
+				//@formatter:off
+				int diff = (skipPosition == i - 1) 
+						? levels.get(i) - levels.get(i - 2)
 						: levels.get(i) - levels.get(i - 1);
+				//@formatter:on
 				if (isRising) {
 					if (diff < 1 || diff > 3) {
 						if (skipPosition >= 0) {
+							// we can't skip any more positions, so this is unsafe
 							return false;
 						} else {
-							// there's something wrong with where we are - try skipping current position and previous position,
+							// there's something wrong with where we are - try skipping current position and
+							// previous position,
 							return isSafeWithProblemDamper(isRising, i) || isSafeWithProblemDamper(isRising, i - 1);
 						}
 					}
 				} else {
 					if (diff > -1 || diff < -3) {
 						if (skipPosition >= 0) {
+							// we can't skip any more positions, so this is unsafe
 							return false;
 						} else {
-							// there's something wrong with where we are - try skipping current position and previous position,
+							// there's something wrong with where we are - try skipping current position and
+							// previous position,
 							return isSafeWithProblemDamper(isRising, i) || isSafeWithProblemDamper(isRising, i - 1);
 						}
 					}
