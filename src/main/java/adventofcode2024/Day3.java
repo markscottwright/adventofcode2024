@@ -18,20 +18,23 @@ public class Day3 {
 
 	public static List<Pair<Integer, Integer>> parse(String input) {
 		try (var scanner = new Scanner(input)) {
-			return scanner.findAll("mul\\(([0-9][0-9]?[0-9]?),([0-9][0-9]?[0-9]?)\\)").map(m -> Pair.of(Integer.parseInt(m.group(1)), Integer.parseInt(m.group(2)))).toList();
+			return scanner.findAll("mul\\(([0-9][0-9]?[0-9]?),([0-9][0-9]?[0-9]?)\\)")
+					.map(m -> Pair.of(Integer.parseInt(m.group(1)), Integer.parseInt(m.group(2)))).toList();
 		}
 	}
 
 	public static List<Pair<Integer, Integer>> parseWithConditionals(String input) {
-		var out = new ArrayList<Pair<Integer,Integer>>();
+		var out = new ArrayList<Pair<Integer, Integer>>();
 		boolean active = true;
 		try (var scanner = new Scanner(input)) {
 			for (var match : scanner.findAll(
+			//@formatter:off
 					"do\\(\\)"
 					+ "|"
 					+ "don't\\(\\)"
 					+ "|"
 					+ "mul\\(([0-9][0-9]?[0-9]?),([0-9][0-9]?[0-9]?)\\)").toList()) {
+				//@formatter:on
 				if (match.group().equals("do()"))
 					active = true;
 				else if (match.group().equals("don't()"))
