@@ -25,7 +25,7 @@ public class Day3 {
 
 	public static List<Pair<Integer, Integer>> parseWithConditionals(String input) {
 		var out = new ArrayList<Pair<Integer, Integer>>();
-		boolean active = true;
+		boolean enabled = true;
 		try (var scanner = new Scanner(input)) {
 			for (var match : scanner.findAll(
 			//@formatter:off
@@ -39,10 +39,10 @@ public class Day3 {
 					+ "\\)").toList()) {
 				//@formatter:on
 				if (match.group().equals("do()"))
-					active = true;
+					enabled = true;
 				else if (match.group().equals("don't()"))
-					active = false;
-				else if (active) {
+					enabled = false;
+				else if (enabled) {
 					out.add(Pair.of(Integer.parseInt(match.group(1)), Integer.parseInt(match.group(2))));
 				}
 			}
