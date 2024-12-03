@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import adventofcode2024.Day2.Report;
-
 public class Day2 {
 	public static class Report {
 
@@ -60,11 +58,7 @@ public class Day2 {
 							return false;
 						} else {
 							// there's something wrong with where we are - try skipping current position and previous position,
-							// and also try switch isRising (since if the current position is problematic, maybe that changes our original
-							// idea of whether we're rising or not
-							return isSafeWithProblemDamper(isRising, i) || isSafeWithProblemDamper(isRising, i - 1)
-									|| isSafeWithProblemDamper(!isRising, i)
-									|| isSafeWithProblemDamper(!isRising, i - 1);
+							return isSafeWithProblemDamper(isRising, i) || isSafeWithProblemDamper(isRising, i - 1);
 						}
 					}
 				} else {
@@ -73,11 +67,7 @@ public class Day2 {
 							return false;
 						} else {
 							// there's something wrong with where we are - try skipping current position and previous position,
-							// and also try switch isRising (since if the current position is problematic, maybe that changes our original
-							// idea of whether we're rising or not
-							return isSafeWithProblemDamper(isRising, i) || isSafeWithProblemDamper(isRising, i - 1)
-									|| isSafeWithProblemDamper(!isRising, i)
-									|| isSafeWithProblemDamper(!isRising, i - 1);
+							return isSafeWithProblemDamper(isRising, i) || isSafeWithProblemDamper(isRising, i - 1);
 						}
 					}
 				}
@@ -86,10 +76,7 @@ public class Day2 {
 		}
 
 		boolean isSafeWithProblemDamper() {
-			boolean isSafe = isSafeWithProblemDamper(true, -1) || isSafeWithProblemDamper(false, -1);
-			if (!isSafe)
-				System.out.println(this);
-			return isSafe;
+			return isSafeWithProblemDamper(true, -1) || isSafeWithProblemDamper(false, -1);
 		}
 	}
 
