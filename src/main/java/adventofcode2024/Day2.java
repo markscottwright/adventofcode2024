@@ -55,6 +55,7 @@ public class Day2 {
 						? levels.get(i) - levels.get(i - 2)
 						: levels.get(i) - levels.get(i - 1);
 				//@formatter:on
+				
 				if (isRising) {
 					if (diff < 1 || diff > 3) {
 						if (skipPosition >= 0) {
@@ -62,7 +63,7 @@ public class Day2 {
 							return false;
 						} else {
 							// there's something wrong with where we are - try skipping current position and
-							// previous position,
+							// previous position, since that's what we're comparing
 							return isSafeWithProblemDamper(isRising, i) || isSafeWithProblemDamper(isRising, i - 1);
 						}
 					}
@@ -73,7 +74,7 @@ public class Day2 {
 							return false;
 						} else {
 							// there's something wrong with where we are - try skipping current position and
-							// previous position,
+							// previous position, since that's what we're comparing
 							return isSafeWithProblemDamper(isRising, i) || isSafeWithProblemDamper(isRising, i - 1);
 						}
 					}
