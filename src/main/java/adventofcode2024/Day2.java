@@ -1,11 +1,17 @@
 package adventofcode2024;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 public class Day2 {
 	public static class Report {
@@ -88,8 +94,8 @@ public class Day2 {
 		}
 	}
 
-	public static void main(String[] args) throws IOException {
-		List<Report> reports = Day2.parse(Files.readString(Path.of("data/day2.dat")));
+	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+		List<Report> reports = Day2.parse(new DataProtection().decrypt(2));
 		System.out.println("day 2 part 1: " + reports.stream().filter(Report::isSafe).count());
 		System.out.println("day 2 part 1: " + reports.stream().filter(Report::isSafeWithProblemDamper).count());
 	}

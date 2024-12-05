@@ -1,13 +1,19 @@
 package adventofcode2024;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import org.apache.commons.collections4.multimap.HashSetValuedHashMap;
 
@@ -85,8 +91,9 @@ public class Day5 {
 		return out;
 	}
 
-	public static void main(String[] args) throws IOException {
-		Day5 day5 = Day5.parse(Files.readString(Path.of("data/day5.dat")));
+	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+		DataProtection dataProtection = new DataProtection();
+		Day5 day5 = Day5.parse(dataProtection.decrypt(5));
 		System.out.println("Day 5 part 1: " + day5.sumOfGoodMiddlePages());
 		System.out.println("Day 5 part 2: " + day5.sumOfBadMiddlePages());
 	}

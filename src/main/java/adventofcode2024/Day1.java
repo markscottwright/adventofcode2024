@@ -1,16 +1,22 @@
 package adventofcode2024;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import org.apache.commons.collections4.bag.HashBag;
 
 public class Day1 {
-	public static void main(String[] args) throws IOException {
-		var day1 = parse(Files.readString(Path.of("data/day1.dat")));
+	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+		var day1 = parse(new DataProtection().decrypt(1));
 		System.out.println("day 1 part 1: " + day1.totalDistance());
 		System.out.println("day 1 part 2: " + day1.simularityScore());
 	}
