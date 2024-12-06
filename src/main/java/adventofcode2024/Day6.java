@@ -72,7 +72,7 @@ public class Day6 {
 			var pos = startingGuardPosition;
 			var direction = startingGuardDirection;
 			while (pos.insideBox(width, height)) {
-				// been here before
+				// been here before moving in the same direction, so this must be a loop
 				if (visited.contains(Pair.of(pos, direction)))
 					return true;
 				
