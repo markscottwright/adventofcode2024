@@ -38,7 +38,7 @@ public class DataProtection {
 		this(System.getProperty("aocpassword"));
 	}
 
-	String decrypt(int dayNum)
+	String decryptDay(int dayNum)
 			throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException,
 			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
 		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");

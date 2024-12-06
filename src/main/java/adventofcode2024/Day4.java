@@ -93,7 +93,7 @@ public class Day4 {
 	}
 
 	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
-		String input = new DataProtection().decrypt(4);
+		String input = new DataProtection().decryptDay(4);
 		WordSearch wordSearch = Day4.parse(input);
 		System.out.println("Day 4 part 1: " + wordSearch.xmasCount());
 		System.out.println("Day 4 part 2: " + wordSearch.x_MasCount());

@@ -17,7 +17,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class Day3 {
 	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
-		String input = new DataProtection().decrypt(3);
+		String input = new DataProtection().decryptDay(3);
 		System.out.println("day 3 part 1: " + sumOfMultiplications(parse(input)));
 		System.out.println("day 3 part 2: " + sumOfMultiplications(parseWithConditionals(input)));
 	}

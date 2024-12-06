@@ -16,7 +16,7 @@ import org.apache.commons.collections4.bag.HashBag;
 
 public class Day1 {
 	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
-		var day1 = parse(new DataProtection().decrypt(1));
+		var day1 = parse(new DataProtection().decryptDay(1));
 		System.out.println("day 1 part 1: " + day1.totalDistance());
 		System.out.println("day 1 part 2: " + day1.simularityScore());
 	}

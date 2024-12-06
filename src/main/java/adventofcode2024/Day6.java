@@ -109,7 +109,7 @@ public class Day6 {
 	public static void main(String[] args)
 			throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
 			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
-		String input = new DataProtection().decrypt(6);
+		String input = new DataProtection().decryptDay(6);
 		Map map = Map.parse(input);
 		int positionsVisited = map.doRounds().size();
 		System.out.println("Day 6 part 1: " + positionsVisited);

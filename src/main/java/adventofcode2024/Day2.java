@@ -95,7 +95,7 @@ public class Day2 {
 	}
 
 	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
-		List<Report> reports = Day2.parse(new DataProtection().decrypt(2));
+		List<Report> reports = Day2.parse(new DataProtection().decryptDay(2));
 		System.out.println("day 2 part 1: " + reports.stream().filter(Report::isSafe).count());
 		System.out.println("day 2 part 2: " + reports.stream().filter(Report::isSafeWithProblemDamper).count());
 	}

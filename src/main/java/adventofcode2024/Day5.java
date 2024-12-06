@@ -93,7 +93,7 @@ public class Day5 {
 
 	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
 		DataProtection dataProtection = new DataProtection();
-		Day5 day5 = Day5.parse(dataProtection.decrypt(5));
+		Day5 day5 = Day5.parse(dataProtection.decryptDay(5));
 		System.out.println("Day 5 part 1: " + day5.sumOfGoodMiddlePages());
 		System.out.println("Day 5 part 2: " + day5.sumOfBadMiddlePages());
 	}
