@@ -75,9 +75,9 @@ public class Day6 {
 				// been here before moving in the same direction, so this must be a loop
 				if (visited.contains(Pair.of(pos, direction)))
 					return true;
-				
+
 				visited.add(Pair.of(pos, direction));
-				
+
 				// use a while here - maybe more than one adjacent obstruction
 				while (obstructions.contains(pos.moveInDirection(direction)))
 					direction = direction.turnRight();
@@ -98,10 +98,9 @@ public class Day6 {
 						}
 						obstructions.remove(newObstruction);
 					}
-
 				}
 			}
-			
+
 			return numLoops;
 		}
 
