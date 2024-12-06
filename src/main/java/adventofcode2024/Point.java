@@ -53,4 +53,21 @@ public class Point {
 	static Point toW(Point p)  {return p.w();}
 	static Point toNw(Point p) {return p.nw();}
 	//@formatter:on
+
+	public boolean insideBox(int width, int height) {
+		return x >= 0 && x < width && y >= 0 && y < height;
+	}
+
+	public Point moveInDirection(Direction direction) {
+		if (direction == Direction.e)
+			return e();
+		else if (direction == Direction.n)
+			return n();
+		else if (direction == Direction.s)
+			return s();
+		else {
+			assert direction == Direction.w;
+			return w();
+		}
+	}
 }
