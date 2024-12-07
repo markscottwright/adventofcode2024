@@ -35,12 +35,18 @@ public class Day7 {
 		return out;
 	}
 
+	/**
+	 * returns an empty array if no solution found
+	 */
 	public static ArrayList<Character> determineOperators(Long total, List<Long> operands, boolean allowConcat) {
 		ArrayList<Character> maybeOperators = new ArrayList<Character>();
 		determineOperators(total, operands, maybeOperators, allowConcat);
 		return maybeOperators;
 	}
 
+	/**
+	 * returns true if maybeOperators is the solution
+	 */
 	private static boolean determineOperators(Long total, List<Long> operands, ArrayList<Character> maybeOperators,
 			boolean allowConcat) {
 		Long solutionSoFar = solve(operands, maybeOperators);
@@ -74,6 +80,10 @@ public class Day7 {
 		return false;
 	}
 
+	/**
+	 * Solve the equation formed by inserting maybeOperators between operands.  Assumes operands is not
+	 * empty.  If maybeOperators isn't long enough to use all operands, solves a partial equation. 
+	 */
 	public static Long solve(List<Long> operands, ArrayList<Character> maybeOperators) {
 		long total = operands.get(0);
 		for (int i = 1; i < operands.size(); ++i) {
