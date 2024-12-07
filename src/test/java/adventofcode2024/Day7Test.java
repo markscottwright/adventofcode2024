@@ -53,5 +53,13 @@ class Day7Test {
 		assertThat(Day7.solve(List.of(1L,2L,4L), new ArrayList<Character>(List.of('*', '*')))).isEqualTo(8L);
 
 	}
-
+	
+	
+	@Test
+	void testConcat() {
+		long a = 123;
+		long b = 55;
+		long concatted = a * ((long) Math.pow(10, ((long) Math.log10(b)) + 1)) + b;
+		assertThat(concatted).isEqualTo(12355);
+	}
 }
