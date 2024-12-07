@@ -87,7 +87,8 @@ public class Day7 {
 			} else if (nextOperator == '|') {
 				long operand = operands.get(i);
 				// Doing concat using math is much faster.  We determine the number of digits (log10(v)+1)
-				// in the operand, multiply total by 10^number_of_digits and add the operand.
+				// in the operand, multiply total by 10^number_of_digits to "slide it to the left"
+				// and add the operand.
 				total = total * ((long) Math.pow(10, ((long) Math.log10(operand)) + 1)) + operand;
 				// total = Long.parseLong(Long.toString(total) + Long.toString(operands.get(i)));
 			}
