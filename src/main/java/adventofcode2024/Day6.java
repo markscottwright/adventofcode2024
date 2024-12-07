@@ -113,9 +113,9 @@ public class Day6 {
 		Map map = Map.parse(input);
 		int positionsVisited = map.doRounds().size();
 		System.out.println("Day 6 part 1: " + positionsVisited);
-		long start = System.currentTimeMillis();
+//		long start = System.currentTimeMillis();
 		System.out.println("Day 6 part 2: " + map.numberOfLoopCausingPositions());
-		long time = System.currentTimeMillis() - start;
-		System.out.println("Took " + (time / 1000.0) + " seconds");
+//		long time = System.currentTimeMillis() - start;
+//		System.out.println("Took " + (time / 1000.0) + " seconds");
 	}
 }

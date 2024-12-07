@@ -54,12 +54,15 @@ class Day7Test {
 
 	}
 	
-	
 	@Test
 	void testConcat() {
 		long a = 123;
 		long b = 55;
-		long concatted = a * ((long) Math.pow(10, ((long) Math.log10(b)) + 1)) + b;
+		
+		int numDigitsInB = (int) Math.log10(b) + 1;
+		long aSlidLeft = a * Day7.tenToTheNth(numDigitsInB);
+		long concatted = aSlidLeft + b;
+		
 		assertThat(concatted).isEqualTo(12355);
 	}
 }

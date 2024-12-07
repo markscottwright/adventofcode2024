@@ -21,7 +21,10 @@ public class Day7 {
 			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
 		ArrayList<Pair<Long, List<Long>>> calibrations = Day7.parse(new DataProtection().decryptDay(7));
 		System.out.println("day 7 part 1: " + sumOfValidEquations(calibrations, false));
+		
+		long start = System.currentTimeMillis();
 		System.out.println("day 7 part 2: " + sumOfValidEquations(calibrations, true));
+		System.out.println(System.currentTimeMillis() - start);
 	}
 
 	public static ArrayList<Pair<Long, List<Long>>> parse(String input) {
@@ -81,26 +84,29 @@ public class Day7 {
 	}
 
 	/**
-	 * Solve the equation formed by inserting maybeOperators between operands.  Assumes operands is not
-	 * empty.  If maybeOperators isn't long enough to use all operands, solves a partial equation. 
+	 * Solve the equation formed by inserting maybeOperators between operands.
+	 * Assumes operands is not empty. If maybeOperators isn't long enough to use all
+	 * operands, solves a partial equation.
 	 */
 	public static Long solve(List<Long> operands, ArrayList<Character> maybeOperators) {
-		long total = operands.get(0);
-		for (int i = 1; i < operands.size(); ++i) {
-			if (i - 1 >= maybeOperators.size())
-				return total;
-			Character nextOperator = maybeOperators.get(i - 1);
+		var operandsIterator = operands.iterator();
+		var maybeOperatorsIterator = maybeOperators.iterator();
+		long total = operandsIterator.next();
+		while (operandsIterator.hasNext() && maybeOperatorsIterator.hasNext()) {
+			Character nextOperator = maybeOperatorsIterator.next();
+			Long operand = operandsIterator.next();
 			if (nextOperator == '+') {
-				total += operands.get(i);
+				total += operand;
 			} else if (nextOperator == '*') {
-				total *= operands.get(i);
+				total *= operand;
 			} else if (nextOperator == '|') {
-				long operand = operands.get(i);
-				// Doing concat using math is much faster.  We determine the number of digits (log10(v)+1)
-				// in the operand, multiply total by 10^number_of_digits to "slide it to the left"
-				// and add the operand.
-				total = total * ((long) Math.pow(10, ((long) Math.log10(operand)) + 1)) + operand;
-				// total = Long.parseLong(Long.toString(total) + Long.toString(operands.get(i)));
+				// Doing concat using math is much faster. We determine the number of digits
+				// (log10(v)+1) in the operand, multiply total by 10^number_of_digits to "slide
+				// it to the left" and add the operand.
+				int numDigitsInOperand = ((int) Math.log10(operand)) + 1;
+				total = total * tenToTheNth(numDigitsInOperand) + operand;
+//				total = total * (long) Math.pow(10, numDigitsInOperand) + operand;
+//				total = Long.parseLong(Long.toString(total) + Long.toString(operand));
 			}
 		}
 		return total;
@@ -109,11 +115,19 @@ public class Day7 {
 	public static long sumOfValidEquations(ArrayList<Pair<Long, List<Long>>> calibrations, boolean allowConcat) {
 		long total = 0;
 		for (var calibration : calibrations) {
-			ArrayList<Character> operators = determineOperators(calibration.getLeft(), calibration.getRight(),
-					allowConcat);
+			var operators = determineOperators(calibration.getLeft(), calibration.getRight(), allowConcat);
 			if (!operators.isEmpty())
 				total += calibration.getLeft();
 		}
 		return total;
+	}
+
+	public static long tenToTheNth(int exponent) {
+		// is this faster than using doubles? In theory, I should be doing this by
+		// doubling rather than iteration
+		long out = 10;
+		for (int i = exponent - 1; i > 0; i--)
+			out *= 10;
+		return out;
 	}
 }
