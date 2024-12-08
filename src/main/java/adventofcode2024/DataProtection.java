@@ -38,18 +38,22 @@ public class DataProtection {
 		this(System.getProperty("aocpassword"));
 	}
 
-	String decryptDay(int dayNum)
-			throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException,
-			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
-		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
-		KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65535, 32 * 8);
-		SecretKeySpec secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
-		Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-		cipher.init(Cipher.DECRYPT_MODE, secret, new GCMParameterSpec(16 * 8, iv));
+	String decryptDay(int dayNum) {
+		try {
+			SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+			KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65535, 32 * 8);
+			SecretKeySpec secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
+			Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+			cipher.init(Cipher.DECRYPT_MODE, secret, new GCMParameterSpec(16 * 8, iv));
 
-		byte[] cipherText = Files.readAllBytes(Path.of("data/day" + dayNum + ".enc"));
-		byte[] clearText = cipher.doFinal(cipherText);
-		return new String(clearText);
+			byte[] cipherText = Files.readAllBytes(Path.of("data/day" + dayNum + ".enc"));
+			byte[] clearText = cipher.doFinal(cipherText);
+			return new String(clearText);
+		} catch (InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException
+				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException
+				| IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	boolean encryptInPlace(int dayNum)

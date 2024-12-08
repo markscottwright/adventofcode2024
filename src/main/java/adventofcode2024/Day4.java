@@ -1,17 +1,8 @@
 package adventofcode2024;
 
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 public class Day4 {
 
@@ -92,7 +83,7 @@ public class Day4 {
 		return new WordSearch(wordSearch);
 	}
 
-	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+	public static void main(String[] args) {
 		String input = new DataProtection().decryptDay(4);
 		WordSearch wordSearch = Day4.parse(input);
 		System.out.println("Day 4 part 1: " + wordSearch.xmasCount());

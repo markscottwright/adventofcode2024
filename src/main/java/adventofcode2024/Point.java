@@ -70,4 +70,12 @@ public class Point {
 			return w();
 		}
 	}
+
+	public Distance distance(Point other) {
+		return new Distance(other.x - x, other.y-y);
+	}
+	
+	public Point move(Distance d) {
+		return new Point(x+d.getX(), y+d.getY());
+	}
 }

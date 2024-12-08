@@ -1,7 +1,7 @@
 package adventofcode2024;
 
 public class All {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		Day1.main(args);
 		Day2.main(args);
 		Day3.main(args);
@@ -9,5 +9,6 @@ public class All {
 		Day5.main(args);
 		Day6.main(args);
 		Day7.main(args);
+		Day8.main(args);
 	}
 }

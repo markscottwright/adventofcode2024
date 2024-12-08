@@ -1,30 +1,19 @@
 package adventofcode2024;
 
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-
 import org.apache.commons.lang3.tuple.Pair;
 
 public class Day7 {
-	public static void main(String[] args)
-			throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
-			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
+	public static void main(String[] args) {
 		ArrayList<Pair<Long, List<Long>>> calibrations = Day7.parse(new DataProtection().decryptDay(7));
 		System.out.println("day 7 part 1: " + sumOfValidEquations(calibrations, false));
 		
-		long start = System.currentTimeMillis();
+//		long start = System.currentTimeMillis();
 		System.out.println("day 7 part 2: " + sumOfValidEquations(calibrations, true));
-		System.out.println(System.currentTimeMillis() - start);
+//		System.out.println(System.currentTimeMillis() - start);
 	}
 
 	public static ArrayList<Pair<Long, List<Long>>> parse(String input) {

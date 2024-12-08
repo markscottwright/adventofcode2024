@@ -1,16 +1,7 @@
 package adventofcode2024;
 
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -106,9 +97,7 @@ public class Day6 {
 
 	}
 
-	public static void main(String[] args)
-			throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
-			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
+	public static void main(String[] args) {
 		String input = new DataProtection().decryptDay(6);
 		Map map = Map.parse(input);
 		int positionsVisited = map.doRounds().size();

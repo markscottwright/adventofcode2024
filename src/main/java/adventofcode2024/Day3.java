@@ -1,22 +1,13 @@
 package adventofcode2024;
 
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-
 import org.apache.commons.lang3.tuple.Pair;
 
 public class Day3 {
-	public static void main(String[] args) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+	public static void main(String[] args) {
 		String input = new DataProtection().decryptDay(3);
 		System.out.println("day 3 part 1: " + sumOfMultiplications(parse(input)));
 		System.out.println("day 3 part 2: " + sumOfMultiplications(parseWithConditionals(input)));
