@@ -76,8 +76,8 @@ public class Day8 {
 					for (Point p1 : points) {
 						for (Point p2 : points) {
 							if (!p1.equals(p2)) {
-								Point antiNode = p2;
 								Distance distance = p1.distance(p2);
+								Point antiNode = p2;
 								while (antiNode.insideBox(maxX, maxY)) {
 									antiNodes.add(antiNode);
 									antiNode = antiNode.move(distance);
