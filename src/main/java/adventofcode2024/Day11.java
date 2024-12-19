@@ -48,7 +48,11 @@ public class Day11 {
             return new Stones(nextStones);
         }
 
-        public long count(long number, int times, HashMap<Pair<Long, Integer>, Long> cache) {
+        /**
+         * Using the stones rules, recursively determine the count for number with times
+         * remaining blinks. Use cache to memoize the answer.
+         */
+        private long count(long number, int times, HashMap<Pair<Long, Integer>, Long> cache) {
             if (times == 0)
                 return 1L;
             else if (cache.containsKey(Pair.of(number, times)))
@@ -73,8 +77,7 @@ public class Day11 {
 
         public long sumAfterBlinks(int times) {
             var cache = new HashMap<Pair<Long, Integer>, Long>();
-            long sum = stones.stream().mapToLong(s -> count(s, times, cache)).sum();
-            return sum;
+            return stones.stream().mapToLong(s -> count(s, times, cache)).sum();
         }
 
         public int count() {
@@ -85,7 +88,7 @@ public class Day11 {
 
     public static void main(String[] args) {
         Stones stones = Stones.parse(new DataProtection().decryptDay(11));
-        var originalStones =stones;
+        var originalStones = stones;
         for (int i = 0; i < 25; i++) {
             stones = stones.blink();
         }
