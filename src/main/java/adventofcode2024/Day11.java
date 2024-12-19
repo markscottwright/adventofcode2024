@@ -3,12 +3,8 @@ package adventofcode2024;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
-import org.apache.commons.collections4.Bag;
-import org.apache.commons.collections4.bag.HashBag;
-import org.apache.commons.collections4.bag.TreeBag;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class Day11 {
