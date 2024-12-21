@@ -1,5 +1,6 @@
 package adventofcode2024;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Point {
@@ -72,10 +73,14 @@ public class Point {
 	}
 
 	public Distance distance(Point other) {
-		return new Distance(other.x - x, other.y-y);
+		return new Distance(other.x - x, other.y - y);
 	}
-	
+
 	public Point move(Distance d) {
-		return new Point(x+d.getX(), y+d.getY());
+		return new Point(x + d.getX(), y + d.getY());
+	}
+
+	public Point[] getCardinalNeighbors() {
+		return new Point[] { n(), e(), w(), s() };
 	}
 }
