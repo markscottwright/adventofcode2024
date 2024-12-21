@@ -145,16 +145,17 @@ public class Day12 {
 
 		public long fencingCost() {
 			long fencingCost = 0;
-			for (Entry<Character, Set<Point>> region : findRegions().entries()) {
-				int perimiter = calculatePerimiter(region.getValue());
-				fencingCost += perimiter * region.getValue().size();
+			for (var typeAndRegion : findRegions().entries()) {
+				var region = typeAndRegion.getValue();
+				int perimiter = calculatePerimiter(region);
+				fencingCost += perimiter * region.size();
 			}
 			return fencingCost;
 		}
 
 		public long fencingCostWithBulkDiscount() {
 			long fencingCost = 0;
-			for (Entry<Character, Set<Point>> typeAndRegion : findRegions().entries()) {
+			for (var typeAndRegion : findRegions().entries()) {
 				var region = typeAndRegion.getValue();
 				int numSides = calculateNumSides(region);
 //				System.out.println("num sides = " + numSides + " : " + typeAndRegion.getKey() + " : " + region);
