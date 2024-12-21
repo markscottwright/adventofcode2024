@@ -72,72 +72,72 @@ public class Day12 {
 			var inNorthSide = new HashSet<Point>();
 			var inSouthSide = new HashSet<Point>();
 			for (Point point : region) {
-				boolean northSide, southSide, eastSide, westSide;
-				northSide = southSide = eastSide = westSide = false;
+				boolean newNorthSideFound, newSouthSideFound, newEastSideFound, newWestSideFound;
+				newNorthSideFound = newSouthSideFound = newEastSideFound = newWestSideFound = false;
 
 				// find west side by walking north
 				var p = point;
 				while (region.contains(p) && !inWestSide.contains(p) && !region.contains(p.w())) {
 					inWestSide.add(p);
 					p = p.n();
-					westSide = true;
+					newWestSideFound = true;
 				}
 				// then south
 				p = point.s();
 				while (region.contains(p) && !inWestSide.contains(p) && !region.contains(p.w())) {
 					inWestSide.add(p);
 					p = p.s();
-					westSide = true;
+					newWestSideFound = true;
 				}
 				// find east side by walking north
 				p = point;
 				while (region.contains(p) && !inEastSide.contains(p) && !region.contains(p.e())) {
 					inEastSide.add(p);
 					p = p.n();
-					eastSide = true;
+					newEastSideFound = true;
 				}
 				// then south
 				p = point.s();
 				while (region.contains(p) && !inEastSide.contains(p) && !region.contains(p.e())) {
 					inEastSide.add(p);
 					p = p.s();
-					eastSide = true;
+					newEastSideFound = true;
 				}
 				// find north side by walking east
 				p = point;
 				while (region.contains(p) && !inNorthSide.contains(p) && !region.contains(p.n())) {
 					inNorthSide.add(p);
 					p = p.e();
-					northSide = true;
+					newNorthSideFound = true;
 				}
 				// then west
 				p = point.w();
 				while (region.contains(p) && !inNorthSide.contains(p) && !region.contains(p.n())) {
 					inNorthSide.add(p);
 					p = p.w();
-					northSide = true;
+					newNorthSideFound = true;
 				}
 				// find south side by walking east
 				p = point;
 				while (region.contains(p) && !inSouthSide.contains(p) && !region.contains(p.s())) {
 					inSouthSide.add(p);
 					p = p.e();
-					southSide = true;
+					newSouthSideFound = true;
 				}
 				// then west
 				p = point.w();
 				while (region.contains(p) && !inSouthSide.contains(p) && !region.contains(p.s())) {
 					inSouthSide.add(p);
 					p = p.w();
-					southSide = true;
+					newSouthSideFound = true;
 				}
-				if (northSide)
+				if (newNorthSideFound)
 					numSides++;
-				if (southSide)
+				if (newSouthSideFound)
 					numSides++;
-				if (eastSide)
+				if (newEastSideFound)
 					numSides++;
-				if (westSide)
+				if (newWestSideFound)
 					numSides++;
 			}
 			return numSides;
