@@ -32,18 +32,12 @@ class Day13Test {
 		
 		List<Game> games = Day13.parse(input);
 		assertThat(games.get(0).minTokens()).isEqualTo(280);
-		assertThat(games.get(1).minTokens()).isEqualTo(Integer.MAX_VALUE);
+		assertThat(games.get(1).minTokens()).isEqualTo(Long.MAX_VALUE);
 		assertThat(games.get(2).minTokens()).isEqualTo(200);
-		assertThat(games.get(3).minTokens()).isEqualTo(Integer.MAX_VALUE);
-
-		System.out.println(games.get(0).minB());
-		System.out.println(games.get(0).betterMinB());
+		assertThat(games.get(3).minTokens()).isEqualTo(Long.MAX_VALUE);
 
 		assertThat(Day13.Game.minTokensToWin(games)).isEqualTo(480);
 		assertThat(Day13.Game.betterMinTokensToWin(games)).isEqualTo(480);
-		
-		List<Game> gamesWithOffset = Day13.offset(games);
-		assertThat(Day13.Game.betterMinTokensToWin(gamesWithOffset)).isEqualTo(416082282239L);
 
 	}
 

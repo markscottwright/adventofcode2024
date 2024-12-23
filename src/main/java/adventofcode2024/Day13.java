@@ -33,7 +33,7 @@ public class Day13 {
 
 		public long minTokens() {
 			// we're just brute forcing here
-			long minTokens = Integer.MAX_VALUE;
+			long minTokens = Long.MAX_VALUE;
 			for (long a = 100; a >= 0; a--) {
 				for (long b = 100; b >= 0; b--) {
 					if (a * aButtonX + b * bButtonX == prizeX && a * aButtonY + b * bButtonY == prizeY) {
@@ -49,17 +49,17 @@ public class Day13 {
 
 		public static long minTokensToWin(List<Game> games) {
 			// brute force
-			return games.stream().mapToLong(Game::minTokens).filter(t -> t != Integer.MAX_VALUE).sum();
+			return games.stream().mapToLong(Game::minTokens).filter(t -> t != Long.MAX_VALUE).sum();
 		}
 
 		public static long betterMinTokensToWin(List<Game> games) {
 			// calculate set of linear equations solution using floating point math
-			return games.stream().mapToLong(Game::betterMinTokens).filter(t -> t != Integer.MAX_VALUE).sum();
+			return games.stream().mapToLong(Game::betterMinTokens).filter(t -> t != Long.MAX_VALUE).sum();
 		}
 
 		public static long bestMinTokensToWin(List<Game> games) {
 			// calculate set of linear equations solution using integer math
-			return games.stream().mapToLong(Game::bestMinTokens).filter(t -> t != Integer.MAX_VALUE).sum();
+			return games.stream().mapToLong(Game::bestMinTokens).filter(t -> t != Long.MAX_VALUE).sum();
 		}
 
 		public double minB() {
@@ -84,7 +84,7 @@ public class Day13 {
 			long denominator = aButtonY*bButtonX - aButtonX*bButtonY;
 			
 			if (numerator % denominator != 0)
-				return Integer.MAX_VALUE;
+				return Long.MAX_VALUE;
 			else
 				return numerator / denominator;
 		}
@@ -95,7 +95,7 @@ public class Day13 {
 			
 			// if its not an even division, then this isn't a solution
 			if (numerator % denominator != 0)
-				return Integer.MAX_VALUE;
+				return Long.MAX_VALUE;
 			else
 				return numerator / denominator;
 		}
@@ -114,7 +114,7 @@ public class Day13 {
 			if (isInteger(doubleMinA) && isInteger(doubleMinB)) {
 				return (3 * ((long) Math.rint(doubleMinA))) + ((long) Math.rint(doubleMinB));
 			} else {
-				return Integer.MAX_VALUE;
+				return Long.MAX_VALUE;
 			}
 		}
 
@@ -122,8 +122,8 @@ public class Day13 {
 			long a = betterMinA();
 			long b = betterMinB();
 
-			if (a == Integer.MAX_VALUE || b == Integer.MAX_VALUE)
-				return Integer.MAX_VALUE;
+			if (a == Long.MAX_VALUE || b == Long.MAX_VALUE)
+				return Long.MAX_VALUE;
 			
 			return a*3+b;
 		}
