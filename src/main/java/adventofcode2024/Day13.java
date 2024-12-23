@@ -48,14 +48,17 @@ public class Day13 {
 		}
 
 		public static long minTokensToWin(List<Game> games) {
+			// brute force
 			return games.stream().mapToLong(Game::minTokens).filter(t -> t != Integer.MAX_VALUE).sum();
 		}
 
 		public static long betterMinTokensToWin(List<Game> games) {
+			// calculate set of linear equations solution using floating point math
 			return games.stream().mapToLong(Game::betterMinTokens).filter(t -> t != Integer.MAX_VALUE).sum();
 		}
 
 		public static long bestMinTokensToWin(List<Game> games) {
+			// calculate set of linear equations solution using integer math
 			return games.stream().mapToLong(Game::bestMinTokens).filter(t -> t != Integer.MAX_VALUE).sum();
 		}
 
@@ -76,8 +79,10 @@ public class Day13 {
 		}
 		
 		public long betterMinB() {
+			// change formula to only require one divide operation so we wont need doubles
 			long numerator = aButtonY*prizeX - aButtonX*prizeY;
 			long denominator = aButtonY*bButtonX - aButtonX*bButtonY;
+			
 			if (numerator % denominator != 0)
 				return Integer.MAX_VALUE;
 			else
@@ -85,10 +90,10 @@ public class Day13 {
 		}
 
 		public long betterMinA() {
-			long b = betterMinB();
-			
-			long numerator = prizeX - bButtonX*b;
+			long numerator = prizeX - bButtonX*betterMinB();
 			long denominator = aButtonX;
+			
+			// if its not an even division, then this isn't a solution
 			if (numerator % denominator != 0)
 				return Integer.MAX_VALUE;
 			else
@@ -136,7 +141,7 @@ public class Day13 {
 		List<Game> games = Day13.parse(input);
 		System.out.println("Day 13 part 1: " + Game.minTokensToWin(games));
 //		System.out.println("Day 13 part 1: " + Game.betterMinTokensToWin(games));
-		System.out.println("Day 13 part 2: " + Game.betterMinTokensToWin(offset(games)));
+//		System.out.println("Day 13 part 2: " + Game.betterMinTokensToWin(offset(games)));
 		System.out.println("Day 13 part 2: " + Game.bestMinTokensToWin(offset(games)));
 	}
 
