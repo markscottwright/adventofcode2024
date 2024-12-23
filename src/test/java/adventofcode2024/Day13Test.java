@@ -38,6 +38,7 @@ class Day13Test {
 
 		assertThat(Day13.Game.minTokensToWin(games)).isEqualTo(480);
 		assertThat(Day13.Game.betterMinTokensToWin(games)).isEqualTo(480);
+		assertThat(Day13.Game.bestMinTokensToWin(games)).isEqualTo(480);
 
 	}
 
