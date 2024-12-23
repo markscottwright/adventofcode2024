@@ -1,9 +1,7 @@
 package adventofcode2024;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -37,7 +35,10 @@ class Day13Test {
 		assertThat(games.get(1).minTokens()).isEqualTo(Integer.MAX_VALUE);
 		assertThat(games.get(2).minTokens()).isEqualTo(200);
 		assertThat(games.get(3).minTokens()).isEqualTo(Integer.MAX_VALUE);
-		
+
+		System.out.println(games.get(0).minB());
+		System.out.println(games.get(0).betterMinB());
+
 		assertThat(Day13.Game.minTokensToWin(games)).isEqualTo(480);
 		assertThat(Day13.Game.betterMinTokensToWin(games)).isEqualTo(480);
 		

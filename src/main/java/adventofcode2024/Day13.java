@@ -47,18 +47,16 @@ public class Day13 {
 			return minTokens;
 		}
 
-		/**
-		 * @return tokens to win or Integer.MAX_VALUE if no solution
-		 */
 		public static long minTokensToWin(List<Game> games) {
 			return games.stream().mapToLong(Game::minTokens).filter(t -> t != Integer.MAX_VALUE).sum();
 		}
 
-		/**
-		 * @return tokens to win or Integer.MAX_VALUE if no solution
-		 */
 		public static long betterMinTokensToWin(List<Game> games) {
 			return games.stream().mapToLong(Game::betterMinTokens).filter(t -> t != Integer.MAX_VALUE).sum();
+		}
+
+		public static long bestMinTokensToWin(List<Game> games) {
+			return games.stream().mapToLong(Game::bestMinTokens).filter(t -> t != Integer.MAX_VALUE).sum();
 		}
 
 		public double minB() {
@@ -75,6 +73,26 @@ public class Day13 {
 			 */
 			double m = ((double) aButtonX) / aButtonY;
 			return (((double) prizeX) - m * prizeY) / (((double) bButtonX) - m * bButtonY);
+		}
+		
+		public long betterMinB() {
+			long numerator = aButtonY*prizeX - aButtonX*prizeY;
+			long denominator = aButtonY*bButtonX - aButtonX*bButtonY;
+			if (numerator % denominator != 0)
+				return Integer.MAX_VALUE;
+			else
+				return numerator / denominator;
+		}
+
+		public long betterMinA() {
+			long b = betterMinB();
+			
+			long numerator = prizeX - bButtonX*b;
+			long denominator = aButtonX;
+			if (numerator % denominator != 0)
+				return Integer.MAX_VALUE;
+			else
+				return numerator / denominator;
 		}
 
 		public double minA() {
@@ -95,6 +113,16 @@ public class Day13 {
 			}
 		}
 
+		public long bestMinTokens() {
+			long a = betterMinA();
+			long b = betterMinB();
+
+			if (a == Integer.MAX_VALUE || b == Integer.MAX_VALUE)
+				return Integer.MAX_VALUE;
+			
+			return a*3+b;
+		}
+
 		private boolean isInteger(double value) {
 			// needed to have a pretty large "iota" for this to work...  My numerics skills are
 			// to rusty to know why off hand.
@@ -109,6 +137,7 @@ public class Day13 {
 		System.out.println("Day 13 part 1: " + Game.minTokensToWin(games));
 //		System.out.println("Day 13 part 1: " + Game.betterMinTokensToWin(games));
 		System.out.println("Day 13 part 2: " + Game.betterMinTokensToWin(offset(games)));
+		System.out.println("Day 13 part 2: " + Game.bestMinTokensToWin(offset(games)));
 	}
 
 	public static List<Game> parse(String input) {

@@ -1,11 +1,10 @@
 package adventofcode2024;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 
 import adventofcode2024.Day11.Stones;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
 
 class Day11Test {
 

@@ -1,17 +1,10 @@
 package adventofcode2024;
 
-import static adventofcode2024.Day9.isEven;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Objects;
 
 import org.junit.jupiter.api.Test;
-
-import adventofcode2024.Day9Test.Blocks;
 
 public class Day9Test {
 
