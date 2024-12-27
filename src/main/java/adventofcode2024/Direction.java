@@ -17,4 +17,19 @@ enum Direction {
 			throw new IllegalStateException(); 
 		}
 	}
+
+	Direction turnLeft() {
+		switch (this) {
+		case e:
+			return n;
+		case n:
+			return w;
+		case s:
+			return e;
+		case w:
+			return s;
+		default:
+			throw new IllegalStateException(); 
+		}
+	}
 }

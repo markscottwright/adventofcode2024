@@ -74,6 +74,10 @@ public class Point {
 	public Distance distance(Point other) {
 		return new Distance(other.x - x, other.y - y);
 	}
+	
+	public int manhattanDistance(Point other) {
+		return Math.abs(x - other.x) + Math.abs(y - other.y);
+	}
 
 	public Point move(Distance d) {
 		return new Point(x + d.getX(), y + d.getY());
