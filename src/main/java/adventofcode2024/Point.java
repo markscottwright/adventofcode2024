@@ -82,4 +82,12 @@ public class Point {
 	public Point[] getCardinalNeighbors() {
 		return new Point[] { n(), e(), w(), s() };
 	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
 }
