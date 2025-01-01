@@ -48,7 +48,8 @@ public class DataProtection {
 
 			byte[] cipherText = Files.readAllBytes(Path.of("data/day" + dayNum + ".enc"));
 			byte[] clearText = cipher.doFinal(cipherText);
-			return new String(clearText);
+			// doing this on windows means that the dumb DOS line delimiters are preserved.
+			return new String(clearText).replaceAll("\r\n", "\n");
 		} catch (InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException
 				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException
 				| IOException e) {

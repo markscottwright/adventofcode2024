@@ -167,8 +167,8 @@ public class Day17 {
 		}
 
 		public static Computer parse(String input) {
-			String[] registersAndProgram = input.split(System.lineSeparator() + System.lineSeparator());
-			String[] registers = registersAndProgram[0].split(System.lineSeparator());
+			String[] registersAndProgram = input.split("\n\n");
+			String[] registers = registersAndProgram[0].split("\n");
 			assert registers[0].contains("Register A:");
 			assert registers[1].contains("Register B:");
 			assert registers[2].contains("Register C:");

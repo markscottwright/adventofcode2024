@@ -19,5 +19,6 @@ public class All {
 		Day15.main(args);
 		Day16.main(args);
 		Day17.main(args);
+		Day18.main(args);
 	}
 }
