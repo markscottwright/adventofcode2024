@@ -41,49 +41,10 @@ public class Day19 {
 			return desiredPatterns.stream().filter(p -> pattern.matcher(p).matches()).toList();
 		}
 
-		public List<String> possiblePatternsNonRegex() {
-			return desiredPatterns.stream().filter(this::matchesTowels).toList();
-		}
-
-		public boolean matchesTowels(String pattern) {
-			return matchesTowels("", pattern);
-		}
-
-		public boolean matchesTowels(String soFar, String pattern) {
-			System.out.println(soFar + " -- " + pattern);
-			if (pattern.isBlank())
-				return true;
-
-			for (String towel : towels) {
-				if (pattern.startsWith(towel) && matchesTowels(soFar + towel, pattern.substring(towel.length())))
-					return true;
-			}
-			return false;
-		}
-
-		static class Move {
-
-			private String patternRemaining;
-			private ArrayList<String> towels;
-
-			public Move(String patternRemaining, ArrayList<String> towels) {
-				this.patternRemaining = patternRemaining;
-				this.towels = towels;
-			}
-
-			public Move addTowel(String towel) {
-				ArrayList<String> towels = new ArrayList<String>();
-				towels.addAll(this.towels);
-				towels.add(towel);
-				return new Move(patternRemaining.substring(towel.length()), towels);
-			}
-
-		}
-
 		boolean canMatch(String pattern, HashSet<String> unmatchablePatterns) {
 			if (pattern.isBlank())
 				return true;
-			
+
 			if (unmatchablePatterns.contains(pattern))
 				return false;
 
@@ -91,7 +52,7 @@ public class Day19 {
 				if (pattern.startsWith(towel) && canMatch(pattern.substring(towel.length()), unmatchablePatterns))
 					return true;
 			}
-			
+
 			unmatchablePatterns.add(pattern);
 			return false;
 		}
@@ -99,7 +60,7 @@ public class Day19 {
 		private long numMatches(String pattern, HashMap<String, Long> solutionCache) {
 			if (pattern.isBlank())
 				return 1;
-			
+
 			if (solutionCache.containsKey(pattern))
 				return solutionCache.get(pattern);
 
@@ -111,7 +72,7 @@ public class Day19 {
 				}
 			}
 			solutionCache.put(pattern, c);
-			
+
 			return c;
 		}
 
