@@ -62,16 +62,15 @@ public class Day19 {
 			if (solutionCache.containsKey(pattern))
 				return solutionCache.get(pattern);
 
-			long c = 0;
+			long count = 0;
 			for (var towel : towels) {
 				if (pattern.startsWith(towel)) {
-					long numMatches = numMatches(pattern.substring(towel.length()), solutionCache);
-					c += numMatches;
+					count += numMatches(pattern.substring(towel.length()), solutionCache);
 				}
 			}
-			solutionCache.put(pattern, c);
+			solutionCache.put(pattern, count);
 
-			return c;
+			return count;
 		}
 
 		public long numMatches(String pattern) {
