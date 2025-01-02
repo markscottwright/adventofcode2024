@@ -1,7 +1,6 @@
 package adventofcode2024;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +15,6 @@ public class Day19 {
 		public Towels(List<String> towels, List<String> desiredPatterns) {
 			this.towels = new ArrayList<String>();
 			this.towels.addAll(towels);
-			Collections.sort(this.towels, (t1, t2) -> Integer.compare(t2.length(), t1.length()));
 			this.desiredPatterns = desiredPatterns;
 			pattern = getRegexPattern();
 		}
