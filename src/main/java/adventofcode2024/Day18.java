@@ -60,13 +60,20 @@ public class Day18 {
 		}
 
 		public Point corruptedMemoryLocationThatPreventsExit() {
-			for (int i = 0; i < corruptedMemory.size(); ++i) {
-				if (calculateRun(i) == null) {
-					return corruptedMemory.get(i - 1);
+			// interpolate this to solve it faster...
+			int bottom = 0;
+			int top = corruptedMemory.size();
+			while (bottom+1 < top) {
+				int middle = bottom + (top - bottom)/2;
+				if (calculateRun(middle) == null) {
+					top = middle;
+				} else {
+					bottom = middle;
 				}
 			}
-
-			return null;
+			
+			// bottom is good, top is bad, so top is our answer
+			return corruptedMemory.get(top - 1);
 		}
 	}
 
