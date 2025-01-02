@@ -364,20 +364,11 @@ public class Day15 {
 //		System.out.println(warehouse2.robot);
 //		while (true) {
 //			warehouse2.printOn(System.out);
-//			switch (System.console().readLine().toLowerCase()) {
-//			case "n":
-//				warehouse2.moveRobot(Direction.n);
-//				break;
-//			case "e":
-//				warehouse2.moveRobot(Direction.e);
-//				break;
-//			case "s":
-//				warehouse2.moveRobot(Direction.s);
-//				break;
-//			case "w":
-//				warehouse2.moveRobot(Direction.w);
-//				break;
-//			default:
+//			String userInput = System.console().readLine().toLowerCase();
+//			try {
+//				Direction direction = Direction.valueOf(userInput);
+//					warehouse2.moveRobot(direction);
+//			} catch (Exception e) {
 //				System.out.println("Error:");
 //			}
 //		}
